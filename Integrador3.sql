@@ -17,4 +17,6 @@ SELECT CONCAT(ts.ARTISTA, ' - ' , ts.TITULO) AS CANCION,
     YEAR(curdate()) - ts.ANO AS 'AÑOS'
 FROM TOP_SPOTIFY as ts
 ORDER BY CANCION;
-
+-- Columna con cantidad de canciones
+SELECT COUNT(ts.TITULO) AS CANCIONES
+FROM Top_spotify as ts;
