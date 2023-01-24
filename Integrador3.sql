@@ -62,3 +62,16 @@ SELECT CONCAT(empleados.apellido, ', ', empleados.nombre) as NombreCompleto,
 FROM libreria.empleados
 ORDER BY Ingreso;
 
+-- Libro más barato y más caro
+SELECT MIN(libros.precio) as PrecioBarato, 
+	MAX(libros.precio) as PrecioCaro,
+	ROUND(AVG(libros.precio), 2) as PromedioPrecios
+FROM libros;
+-- Lo anterior pero agrupado por categorias
+SELECT libros.categoria,
+	MIN(libros.precio) as PrecioBarato, 
+	MAX(libros.precio) as PrecioCaro,
+	ROUND(AVG(libros.precio), 2) as PromedioPrecios
+FROM libros
+GROUP BY libros.categoria
+HAVING libros.categoria NOT LIKE '%Sin asignar%';
