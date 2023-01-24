@@ -38,3 +38,27 @@ SELECT CONCAT(autores.apellido, ', ', autores.nombre) AS NombreCompleto,
 	autores.provincia
 FROM autores
 ORDER BY NombreCompleto;
+
+-- Variacion de lo anterior, con el nombre en mayuscula
+SELECT CONCAT_WS(', ', autores.apellido, UPPER(autores.nombre)) AS NombreCompleto,
+	autores.provincia
+FROM autores
+ORDER BY NombreCompleto;
+
+-- Iniciales del autor, con su provincia
+SELECT CONCAT(LEFT(autores.apellido, 1),LEFT(autores.nombre, 1)) as Iniciales,
+	autores.provincia
+FROM autores
+ORDER BY Iniciales;
+
+-- Lista de los empleados segun su tiempo de ingreso. Le añado su antiguedad
+SELECT CONCAT(empleados.apellido, ', ', empleados.nombre, ' ', empleados.fecha_ingreso) AS Ingreso,
+	CONCAT(TIMESTAMPDIFF(YEAR, empleados.fecha_ingreso, CURDATE()), ' años') AS Antiguedad
+FROM libreria.empleados
+ORDER BY empleados.apellido;
+
+SELECT CONCAT(empleados.apellido, ', ', empleados.nombre) as NombreCompleto,
+	YEAR(empleados.fecha_ingreso) as Ingreso
+FROM libreria.empleados
+ORDER BY Ingreso;
+
