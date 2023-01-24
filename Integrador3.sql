@@ -20,3 +20,12 @@ ORDER BY CANCION;
 -- Columna con cantidad de canciones
 SELECT COUNT(ts.TITULO) AS CANCIONES
 FROM Top_spotify as ts;
+-- cantidad de canciones que salieron en cada año
+SELECT COUNT(TS.TITULO) AS CantCanciones, ANO
+FROM TOP_SPOTIFY AS ts
+GROUP BY ANO;
+-- lo anterior, pero solo los años con mas de 50 canciones
+SELECT COUNT(TS.TITULO) AS CantCanciones, ANO
+FROM TOP_SPOTIFY AS ts
+GROUP BY ANO
+HAVING CantCanciones > 50;
