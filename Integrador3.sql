@@ -29,3 +29,12 @@ SELECT COUNT(TS.TITULO) AS CantCanciones, ANO
 FROM TOP_SPOTIFY AS ts
 GROUP BY ANO
 HAVING CantCanciones > 50;
+
+-- Ejercicio 2
+USE LIBRERIA;
+
+-- Apellido, nombre y provincia
+SELECT CONCAT(autores.apellido, ', ', autores.nombre) AS NombreCompleto, 
+	autores.provincia
+FROM autores
+ORDER BY NombreCompleto;
