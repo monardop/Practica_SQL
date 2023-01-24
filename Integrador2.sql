@@ -22,3 +22,29 @@ SELECT * FROM TOP_SPOTIFY WHERE GENERO = 'Pop' ORDER BY TITULO;
 SELECT * FROM TOP_SPOTIFY WHERE ANO = 2015 ORDER BY ARTISTA, TITULO;
 -- Genero dance pop anterior al 2011
 SELECT * FROM TOP_SPOTIFY WHERE GENERO = 'Dance Pop' ORDER BY TITULO;
+
+
+-- Ejercicio 3
+USE libreria;
+-- Lista de info de autores de Buenos Aires
+SELECT * FROM autores WHERE ciudad = 'Buenos Aires';
+-- Datos de libros de mayor a menor en base a su precio
+SELECT * FROM libros WHERE precio > 30 ORDER BY precio DESC;
+-- Autores que no sean de bs as, ordenados alfabeticamente
+SELECT * FROM autores WHERE provincia NOT LIKE '%BA%' ORDER BY provincia;
+-- Libros ordenados alfabeticamente, seleccion por precio y categoria
+SELECT * FROM libros WHERE precio < 20 AND categoria LIKE '%cuento%' ORDER BY titulo;
+-- Novelas o ensayos ordenadas alfabéticamente
+SELECT *  FROM libros WHERE categoria LIKE '%novelas%' OR categoria LIKE '%ensayos%' order by titulo;
+-- Libros entre 20 y 35 dls
+SELECT * FROM libros WHERE precio BETWEEN 20 AND 35 ORDER BY precio;
+-- Crear una lista que muestre todos los datosde los autores cuyo nombre sea Jorge Luis, Victoria, Ernesto o Adolfo
+SELECT *
+FROM autores
+WHERE nombre IN
+	('Jorge Luis', 'Victoria', 'Ernesto', 'Adolfo')
+ORDER BY apellido;
+-- Libros cuyo titulo contentga la palabra mundo
+SELECT * FROM libros WHERE titulo LIKE '%mundo%';
+-- Libros sin precio ordenados alfabeticamente
+SELECT * FROM libros WHERE precio IS NULL ORDER BY titulo;
