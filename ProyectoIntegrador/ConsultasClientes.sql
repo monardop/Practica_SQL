@@ -30,6 +30,8 @@ SELECT * FROM laboratorio.clientes_neptuno
 WHERE IDCliente LIKE 'B____';
 
 
+
+
 -- Tabla de nacimientos
 
 -- Bebes de madres extranjeras:
@@ -66,8 +68,9 @@ SELECT * FROM laboratorio.nacimientos
 WHERE COMUNA IN(1101, 3201, 5605, 8108, 9204, 13120, 15202)
 ORDER BY COMUNA;
 
+-- Padres con mas de 10 hijos
 SELECT EDAD_PADRE, NIVEL_PADRE, OCUPA_P, HIJOS_TOTAL
 FROM laboratorio.nacimientos
 WHERE HIJOS_TOTAL >= 10;
 
--- Padres con mas de 10 hijos
+
