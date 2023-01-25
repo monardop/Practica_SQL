@@ -33,30 +33,22 @@ USE Laboratorio;
 
 -- En factura.
 ALTER TABLE Laboratorio.Factura 
-CHANGE ClienteID IDCliente INT;
-ALTER TABLE Laboratorio.Factura
-CHANGE ArticuloID IDArticulo INT;
-ALTER TABLE laboratorio.factura
+CHANGE ClienteID IDCliente INT,
+CHANGE ArticuloID IDArticulo INT,
 MODIFY Monto double unsigned;
 
 -- En Articulo
 ALTER TABLE Laboratorio.Articulo
-CHANGE ArticuloID IDArticulo INT;
-ALTER TABLE laboratorio.articulo
-MODIFY Nombre VARCHAR(75);
-ALTER TABLE laboratorio.articulo
-MODIFY Precio DOUBLE UNSIGNED NOT NULL;
-ALTER TABLE laboratorio.articulo
+CHANGE ArticuloID IDArticulo INT,
+MODIFY Nombre VARCHAR(75),
+MODIFY Precio DOUBLE UNSIGNED NOT NULL,
 MODIFY Stock INT UNSIGNED NOT NULL;
 
 -- En clientes
 ALTER TABLE laboratorio.cliente
-CHANGE ClienteID IDCliente INT;
-ALTER TABLE laboratorio.cliente
-MODIFY Nombre VARCHAR(30) NOT NULL;
-ALTER TABLE laboratorio.cliente
-MODIFY Apellido VARCHAR(35) NOT NULL;
-ALTER TABLE laboratorio.cliente
+CHANGE ClienteID IDCliente INT,
+MODIFY Nombre VARCHAR(30) NOT NULL,
+MODIFY Apellido VARCHAR(35) NOT NULL,
 CHANGE Comentarios Observaciones VARCHAR(255);
 
 -- Cargar datos:
@@ -81,24 +73,25 @@ INSERT INTO laboratorio.cliente VALUES
 -- Importo tabla desde descargas/Clientes_Neptuno.csv
 
 ALTER TABLE laboratorio.clientes_neptuno
-MODIFY IDCliente VARCHAR(5) PRIMARY KEY;
-ALTER TABLE laboratorio.clientes_neptuno
-MODIFY NombreCompania VARCHAR(100) NOT NULL;
-ALTER TABLE laboratorio.clientes_neptuno
+MODIFY IDCliente VARCHAR(5) PRIMARY KEY,
+MODIFY NombreCompania VARCHAR(100) NOT NULL,
 MODIFY Pais VARCHAR(15) NOT NULL;
 
 ALTER TABLE Cliente RENAME Contacto;
 
 -- Importo la tabla Clientes desde un csv ubicado en descargas/clientes.csv
 ALTER TABLE laboratorio.clientes
-MODIFY Cod_Cliente VARCHAR(7) PRIMARY KEY;
-ALTER TABLE laboratorio.clientes
-MODIFY Empresa VARCHAR(100) NOT NULL;
-ALTER TABLE laboratorio.clientes
-MODIFY ciudad VARCHAR(25) NOT NULL;
-ALTER TABLE laboratorio.clientes
-MODIFY telefono INT UNSIGNED;
-ALTER TABLE laboratorio.clientes
+MODIFY Cod_Cliente VARCHAR(7) PRIMARY KEY,
+MODIFY Empresa VARCHAR(100) NOT NULL,
+MODIFY ciudad VARCHAR(25) NOT NULL,
+MODIFY telefono INT UNSIGNED,
 MODIFY responsable VARCHAR(30);
 
 -- importo el csv pedidos en descargas/pedidos.csv
+ALTER TABLE laboratorio.pedidos 
+MODIFY Numero_pedido INT UNSIGNED PRIMARY KEY,
+MODIFY codigo_cliente VARCHAR(7) NOT NULL,
+MODIFY fecha_pedido DATE,
+MODIFY forma_pago ENUM('APLAZADO', 'CONTADO', 'TARJETA'),
+MODIFY enviado ENUM('SI', 'NO');
+
