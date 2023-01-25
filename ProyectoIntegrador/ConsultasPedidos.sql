@@ -30,7 +30,22 @@ SELECT *,
     CEIL(Cargo * 1.21) AS 'Redondeo a favor de la empresa'
 FROM laboratorio.pedidos_neptuno;
 
+SELECT COUNT(FechaPedido) as 'Cantidad de pedidos' 
+FROM laboratorio.pedidos_neptuno;
 
+SELECT COUNT(Transportista) AS 'Entregas SPEEDY EXPRESS'
+FROM laboratorio.pedidos_neptuno
+WHERE Transportista LIKE '%SPEEDY EXPRESS%';
+
+SELECT COUNT(Empleado) AS Ventas
+FROM laboratorio.pedidos_neptuno
+WHERE LEFT(Empleado, 1) LIKE '%C%';
+
+SELECT 
+	ROUND(AVG(Cargo), 2) AS 'Precio promedio',
+	MIN(Cargo) AS 'Precio inferior',
+    MAX(Cargo) AS 'Precio máximo'
+FROM laboratorio.pedidos_neptuno;
 
 
 
