@@ -39,4 +39,7 @@ SELECT EDAD_PADRE, NIVEL_PADRE, OCUPA_P, HIJOS_TOTAL
 FROM laboratorio.nacimientos
 WHERE HIJOS_TOTAL >= 10;
 
-
+SELECT FECHA,
+	LEFT(SEXO, 1) AS Sexo,
+    LEFT(TIPO_PARTO, 1) AS Tipo
+FROM laboratorio.nacimientos;
