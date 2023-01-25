@@ -34,3 +34,6 @@ SELECT LOWER(IDCliente) AS Codigo,
 	CONCAT_WS(' - ',Direccion, ciudad, pais) AS Ubicacion
 FROM laboratorio.clientes_neptuno;
 
+SELECT *, 
+	UPPER(CONCAT(LEFT(ciudad,1), LEFT(pais,1), RIGHT(pais, 2))) AS CODIGO
+FROM laboratorio.clientes_neptuno;
