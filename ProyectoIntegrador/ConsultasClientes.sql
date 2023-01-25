@@ -29,3 +29,8 @@ WHERE IDCliente LIKE 'C%';
 SELECT * FROM laboratorio.clientes_neptuno
 WHERE IDCliente LIKE 'B____';
 
+SELECT LOWER(IDCliente) AS Codigo, 
+	UPPER(NombreCompania) AS Empresa,
+	CONCAT_WS(' - ',Direccion, ciudad, pais) AS Ubicacion
+FROM laboratorio.clientes_neptuno;
+
