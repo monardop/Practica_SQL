@@ -19,3 +19,7 @@ ORDER BY EDAD_MADRE;
 SELECT * FROM laboratorio.nacimientos
 WHERE EDAD_MADRE = EDAD_PADRE;
 
+-- Madres 40 años menor al padre
+SELECT * FROM laboratorio.nacimientos
+WHERE EDAD_PADRE - EDAD_MADRE >= 40
+ORDER BY EDAD_PADRE DESC;
