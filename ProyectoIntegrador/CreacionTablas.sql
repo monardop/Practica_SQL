@@ -77,3 +77,16 @@ INSERT INTO laboratorio.cliente VALUES
     (17, 'Gonzalo', 'López', '23-33587416-0', 'Arias 2624', 'GBA'),
     (26, 'Carlos', 'García', '23-42321230-9', 'Pasteur 322 - 2ºC', 'VIP'),
     (50, 'Micaela', 'Altieri', '23-22885566-5', 'Santamarina 1255', 'GBA');
+
+-- Importo tabla desde descargas/Clientes_Neptuno.csv
+
+ALTER TABLE laboratorio.clientes_neptuno
+MODIFY IDCliente VARCHAR(5) PRIMARY KEY;
+ALTER TABLE laboratorio.clientes_neptuno
+MODIFY NombreCompania VARCHAR(100) NOT NULL;
+ALTER TABLE laboratorio.clientes_neptuno
+MODIFY Pais VARCHAR(15) NOT NULL;
+
+ALTER TABLE Cliente RENAME Contacto;
+
+-- Importo la tabla Clientes desde un csv ubicado en descargas/clientes.csv
