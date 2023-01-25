@@ -55,3 +55,8 @@ SELECT SEXO, FECHA, TIPO_PARTO,
 	REPLACE(NACIONALIDAD,'Chilena', 'Ciudadana') AS Nacionalidad
 FROM laboratorio.nacimientos;
 
+SELECT 
+	COUNT(Sexo) AS Nacimientos,
+    Sexo
+FROM laboratorio.nacimientos
+GROUP BY sexo;
