@@ -60,3 +60,16 @@ SELECT
     Sexo
 FROM laboratorio.nacimientos
 GROUP BY sexo;
+
+CREATE TABLE Laboratorio.Varones
+SELECT * FROM laboratorio.nacimientos
+WHERE SEXO LIKE '%Masculino%';
+
+CREATE TABLE Laboratorio.Mujeres
+SELECT * FROM laboratorio.nacimientos
+WHERE SEXO LIKE '%Femenino%';
+
+CREATE TABLE Laboratorio.Indeterminados
+SELECT * FROM laboratorio.nacimientos
+WHERE SEXO LIKE '%Indeterminado%';
+DROP TABLE laboratorio.nacimientos;
