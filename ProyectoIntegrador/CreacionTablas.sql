@@ -90,3 +90,15 @@ MODIFY Pais VARCHAR(15) NOT NULL;
 ALTER TABLE Cliente RENAME Contacto;
 
 -- Importo la tabla Clientes desde un csv ubicado en descargas/clientes.csv
+ALTER TABLE laboratorio.clientes
+MODIFY Cod_Cliente VARCHAR(7) PRIMARY KEY;
+ALTER TABLE laboratorio.clientes
+MODIFY Empresa VARCHAR(100) NOT NULL;
+ALTER TABLE laboratorio.clientes
+MODIFY ciudad VARCHAR(25) NOT NULL;
+ALTER TABLE laboratorio.clientes
+MODIFY telefono INT UNSIGNED;
+ALTER TABLE laboratorio.clientes
+MODIFY responsable VARCHAR(30);
+
+-- importo el csv pedidos en descargas/pedidos.csv
