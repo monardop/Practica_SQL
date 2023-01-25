@@ -10,3 +10,6 @@ SET NombreEmpleado = CONCAT(Apellidos, ', ', Nombre);
 ALTER TABLE laboratorio.empleados
 DROP Apellidos,
 DROP Nombre;
+
+UPDATE laboratorio.clientes_neptuno
+SET Pais = 'USA' WHERE Pais = 'Estados Unidos';
