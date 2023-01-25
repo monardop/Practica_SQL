@@ -54,5 +54,10 @@ SELECT
 FROM laboratorio.pedidos_neptuno
 GROUP BY Transportista;
 
-
+-- Gasto por compania
+SELECT 
+	NombreCompania AS Cliente,
+	ROUND(SUM(Cargo), 2) AS Gasto
+FROM laboratorio.pedidos_neptuno
+GROUP BY NombreCompania;
 
