@@ -43,3 +43,15 @@ SELECT FECHA,
 	LEFT(SEXO, 1) AS Sexo,
     LEFT(TIPO_PARTO, 1) AS Tipo
 FROM laboratorio.nacimientos;
+
+-- Primeros 5 nacimientos del año
+SELECT sexo, fecha, tipo_parto, atenc_part, local_part,
+	SUBSTRING(FECHA, 4, 2) AS MES
+FROM laboratorio.nacimientos
+ORDER BY MES
+LIMIT 5;
+
+SELECT SEXO, FECHA, TIPO_PARTO,
+	REPLACE(NACIONALIDAD,'Chilena', 'Ciudadana') AS Nacionalidad
+FROM laboratorio.nacimientos;
+
