@@ -47,5 +47,12 @@ SELECT
     MAX(Cargo) AS 'Precio máximo'
 FROM laboratorio.pedidos_neptuno;
 
+-- Entregas por cada transportista
+SELECT 
+	COUNT(IdPedido) AS Entregas,
+    Transportista
+FROM laboratorio.pedidos_neptuno
+GROUP BY Transportista;
+
 
 
