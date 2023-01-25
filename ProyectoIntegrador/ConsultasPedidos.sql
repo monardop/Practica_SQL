@@ -21,3 +21,16 @@ SELECT *,
     ADDDATE(FechaPedido, INTERVAL 30 DAY) AS 'Primer vencimiento',
     ADDDATE(FechaPedido, INTERVAL 2 MONTH) AS 'Segundo vencimiento'
 FROM laboratorio.pedidos_neptuno;
+
+-- Precios con IVA
+SELECT *,
+	ROUND(Cargo * 0.21, 2) AS IVA,
+    ROUND(Cargo * 1.21, 2) AS Neto,
+    FLOOR(Cargo * 1.21) AS 'Redondeeo a favor del cliente',
+    CEIL(Cargo * 1.21) AS 'Redondeo a favor de la empresa'
+FROM laboratorio.pedidos_neptuno;
+
+
+
+
+
