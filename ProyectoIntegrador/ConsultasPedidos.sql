@@ -61,3 +61,21 @@ SELECT
 FROM laboratorio.pedidos_neptuno
 GROUP BY NombreCompania;
 
+-- Listado cronologico de ventas
+SELECT
+	YEAR(FechaPedido) AS Ano,
+    MONTHNAME(FechaPedido) AS Mes,
+	COUNT(IdPedido) AS Ventas
+FROM laboratorio.pedidos_neptuno
+GROUP BY Ano, Mes;
+
+-- Info estadística relevante
+SELECT
+	Empleado,
+	COUNT(IDPedido) AS Ventas,
+	ROUND(SUM(Cargo), 2) AS Facturacion,
+    ROUND(AVG(Cargo), 2) AS Promedio,
+    MAX(Cargo) AS 'Mejor venta',
+    MIN(Cargo) AS 'Peor Venta'
+FROM laboratorio.pedidos_neptuno
+GROUP BY Empleado;
