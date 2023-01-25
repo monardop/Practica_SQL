@@ -1,0 +1,79 @@
+CREATE DATABASE Laboratorio;
+
+CREATE TABLE Laboratorio.Articulo(
+	ArticuloID INT,
+    Nombre VARCHAR(50),
+    Precio DOUBLE,
+    Stock INT,
+    PRIMARY KEY(ArticuloID)
+);
+
+CREATE TABLE Laboratorio.Factura(
+	Letra CHAR,
+    Numero INT,
+    ClienteID INT,
+    ArticuloID INT,
+    Fecha DATE,
+    Monto DOUBLE,
+    PRIMARY KEY(Letra, Numero)
+);
+
+CREATE TABLE Laboratorio.Cliente(
+	ClienteID INT,
+    Nombre VARCHAR(25),
+    Apellido VARCHAR(25),
+    CUIT CHAR(16),
+    Direccion VARCHAR(50),
+    Comentarios VARCHAR(50),
+    PRIMARY KEY(ClienteID)
+);
+
+-- Parte 1.2 Modificaciones
+USE Laboratorio;
+
+-- En factura.
+ALTER TABLE Laboratorio.Factura 
+CHANGE ClienteID IDCliente INT;
+ALTER TABLE Laboratorio.Factura
+CHANGE ArticuloID IDArticulo INT;
+ALTER TABLE laboratorio.factura
+MODIFY Monto double unsigned;
+
+-- En Articulo
+ALTER TABLE Laboratorio.Articulo
+CHANGE ArticuloID IDArticulo INT;
+ALTER TABLE laboratorio.articulo
+MODIFY Nombre VARCHAR(75);
+ALTER TABLE laboratorio.articulo
+MODIFY Precio DOUBLE UNSIGNED NOT NULL;
+ALTER TABLE laboratorio.articulo
+MODIFY Stock INT UNSIGNED NOT NULL;
+
+-- En clientes
+ALTER TABLE laboratorio.cliente
+CHANGE ClienteID IDCliente INT;
+ALTER TABLE laboratorio.cliente
+MODIFY Nombre VARCHAR(30) NOT NULL;
+ALTER TABLE laboratorio.cliente
+MODIFY Apellido VARCHAR(35) NOT NULL;
+ALTER TABLE laboratorio.cliente
+CHANGE Comentarios Observaciones VARCHAR(255);
+
+-- Cargar datos:
+INSERT INTO laboratorio.factura VALUES
+	('A', 28, 14, 335, '2021-03-18', 1589.50),
+	('A', 39, 26, 157, '2021-04-12', 979.75),
+    ('B', 8, 17, 95, '2021-04-25', 513.35),
+    ('B', 12, 5, 411, '2021-05-03', 2385.70),
+    ('B', 19, 50, 157, '2021-05-26', 979.75);
+INSERT INTO laboratorio.articulo VALUES
+	(95, 'Webcam con Micrófono Plug & Play', 513.35, 39),
+    (157, 'Apple AirPods Pro', 979.75, 15),
+    (335, 'Lavasecarropas Automático Samsung', 1589.50, 12),
+    (411, 'Gloria Trevi / Gloria / CD+DVD', 2385.70, 2);
+INSERT INTO laboratorio.cliente VALUES
+	(5, 'Santiago', 'González', '23-24582359-9', 'Uriburu 558 - 7ºA', 'VIP'),
+    (14, 'Gloria', 'Fernándedz', '23-35965852-5', 'Constitución 323', 'GBA'),
+    (17, 'Gonzalo', 'López', '23-33587416-0', 'Arias 2624', 'GBA'),
+    (26, 'Carlos', 'García', '23-42321230-9', 'Pasteur 322 - 2ºC', 'VIP'),
+    (50, 'Micaela', 'Altieri', '23-22885566-5', 'Santamarina 1255', 'GBA');
