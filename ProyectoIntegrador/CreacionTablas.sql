@@ -95,3 +95,15 @@ MODIFY fecha_pedido DATE,
 MODIFY forma_pago ENUM('APLAZADO', 'CONTADO', 'TARJETA'),
 MODIFY enviado ENUM('SI', 'NO');
 
+-- Importo el csc productos en descargas/productos.csv
+ALTER TABLE laboratorio.productos
+MODIFY Cod_Producto INT UNSIGNED PRIMARY KEY,
+MODIFY Seccion VARCHAR(20) NOT NULL,
+MODIFY Nombre VARCHAR(40) NOT NULL,
+MODIFY importado ENUM('VERDADERO','FALSO'),
+MODIFY origen VARCHAR(25) NOT NULL,
+MODIFY dia INT UNSIGNED NOT NULL,
+MODIFY mes INT UNSIGNED NOT NULL,
+MODIFY ano INT UNSIGNED NOT NULL;
+
+
