@@ -64,3 +64,10 @@ SELECT IDProducto, NombreProducto, NombreEmpleado
 FROM productos_neptuno as pn, empleados as emp
 WHERE pn.IDProducto = emp.IDEmpleado;
 
+-- Productos segun proveedor
+SELECT pr.NombreContacto, pn.IdProducto,
+	pn.NombreProducto, pn.PrecioUnidad
+FROM laboratorio.proveedores AS pr, 
+	laboratorio.productos_neptuno AS pn
+WHERE pr.IdProveedor = pn.IdProveedor
+ORDER BY pr.NombreContacto, pn.NombreProducto;
