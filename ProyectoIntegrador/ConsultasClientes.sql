@@ -37,3 +37,11 @@ FROM laboratorio.clientes_neptuno;
 SELECT *, 
 	UPPER(CONCAT(LEFT(ciudad,1), LEFT(pais,1), RIGHT(pais, 2))) AS CODIGO
 FROM laboratorio.clientes_neptuno;
+
+-- Clientes que gastaron mas de 500 dls
+SELECT NombreCompania, ciudad, pais
+FROM clientes_neptuno
+WHERE 500 < (
+	SELECT Cargo FROM pedidos_neptuno
+    WHERE NombreCompania = (SELECT NombreCompania FROM clientes_neptuno))
+ORDER BY NombreCompania;
