@@ -81,3 +81,20 @@ SELECT * FROM clientes;
 CREATE TABLE laboratorio.ProductoSuspendido
 SELECT * FROM laboratorio.productos_neptuno 
 WHERE Suspendido LIKE '%SI%';
+
+ALTER TABLE ProductoSuspendido
+MODIFY IDProducto INT PRIMARY KEY;
+
+-- Se decide que los productos provistos por el proveedor 1 estan suspendidos
+UPDATE laboratorio.productos_neptuno
+SET Suspendido = 'SI'
+WHERE IDProveedor = 1;
+
+INSERT INTO laboratorio.ProductoSuspendido 
+SELECT * FROM laboratorio.productos_neptuno
+WHERE suspendido = 'SI';
+
+SELECT * FROM productoSuspendido;
+
+DELETE FROM laboratorio.productos_neptuno 
+WHERE suspendido = 'SI';
