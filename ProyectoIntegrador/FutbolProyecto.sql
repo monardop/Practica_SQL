@@ -18,4 +18,5 @@ INSERT INTO laboratorio.equipo VALUES
 -- Creo fixture
 SELECT * FROM equipo as a
 INNER JOIN equipo as b
-ON a.Equipo <> b.Equipo ;
+ON a.Equipo <> b.Equipo 
+ORDER BY a.Equipo;
