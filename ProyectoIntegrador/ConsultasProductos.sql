@@ -41,3 +41,14 @@ WHERE NombreCategoria = 'BEBIDAS'
 		SELECT MAX(PrecioUnidad) 
         FROM productos_neptuno
         WHERE NombreCategoria = 'CONDIMENTOS');
+
+-- Categorizacion de productos
+SELECT IdProducto, NombreProducto, 
+	NombreCategoria, PrecioUnidad,
+    CASE
+		WHEN PrecioUnidad > 100 THEN 'DELUXE'
+        WHEN PrecioUnidad BETWEEN 10 AND 100 THEN 'REGULAR'
+        ELSE 'ECONOMICO'
+	END AS Tipo
+FROM laboratorio.productos_neptuno
+ORDER BY PrecioUnidad;
