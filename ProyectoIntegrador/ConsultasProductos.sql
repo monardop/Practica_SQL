@@ -59,3 +59,8 @@ UNION
 SELECT * FROM ProductoSuspendido WHERE PrecioUnidad > 80
 ORDER BY NombreProducto;
 
+-- Ventas segun Empleado
+SELECT IDProducto, NombreProducto, NombreEmpleado
+FROM productos_neptuno as pn, empleados as emp
+WHERE pn.IDProducto = emp.IDEmpleado;
+
