@@ -39,9 +39,10 @@ SELECT *,
 FROM laboratorio.clientes_neptuno;
 
 -- Clientes que gastaron mas de 500 dls
-SELECT NombreCompania, ciudad, pais
-FROM clientes_neptuno
-WHERE 500 < (
-	SELECT Cargo FROM pedidos_neptuno
-    WHERE NombreCompania = (SELECT NombreCompania FROM clientes_neptuno))
-ORDER BY NombreCompania;
+SELECT cn.NombreCompania, 
+	cn.ciudad, cn.pais, 
+    CONCAT('DLS $', pn.Cargo) AS Gasto
+FROM clientes_neptuno as cn
+INNER JOIN pedidos_neptuno as pn
+ON cn.NombreCompania = pn.NombreCompania
+WHERE pn.Cargo > 500;
