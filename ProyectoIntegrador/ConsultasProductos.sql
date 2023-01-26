@@ -21,3 +21,23 @@ ORDER BY NombreProducto;
 -- Precios mas caros que productos suspendidos
 SELECT * FROM productos_neptuno
 WHERE PrecioUnidad > (SELECT MAX(PrecioUnidad) FROM ProductoSuspendido);
+
+SELECT * FROM productos_neptuno
+WHERE LEFT(NombreProducto, 1) = (
+	SELECT LEFT(NombreEmpleado, 1) 
+    FROM empleados 
+	WHERE IDEmpleado = 8)
+ORDER BY NombreProducto;
+
+SELECT NombreProducto FROM productos_neptuno
+WHERE IdProveedor = (
+	SELECT MAX(IDproveedor) 
+    FROM productos_neptuno)
+ORDER BY NombreProducto;
+
+SELECT * FROM productos_neptuno 
+WHERE NombreCategoria = 'BEBIDAS'
+	AND PrecioUnidad > (
+		SELECT MAX(PrecioUnidad) 
+        FROM productos_neptuno
+        WHERE NombreCategoria = 'CONDIMENTOS');
