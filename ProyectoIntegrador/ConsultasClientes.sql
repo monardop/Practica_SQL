@@ -57,3 +57,15 @@ SELECT cn.IDCliente, cn.NombreCompania,
 FROM laboratorio.clientes_neptuno as cn
 ORDER BY Continente, cn.Pais;
 
+-- Evaluación de clientes
+SELECT pn.IdPedido, pn.NombreCompania, 
+	pn.FechaPedido, pn.Cargo,
+    CASE
+		WHEN pn.Cargo > 700 THEN 'EXCELENTE'
+        WHEN pn.Cargo BETWEEN 500 AND 700 THEN 'MUY BUENO'
+        WHEN pn.Cargo BETWEEN 250 AND 500 THEN 'BUENO'
+        WHEN pn.Cargo BETWEEN 50 AND 250 THEN 'REGULAR'
+        ELSE 'MALO'
+	END AS Evaluación
+FROM laboratorio.pedidos_neptuno as pn;
+    
