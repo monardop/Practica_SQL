@@ -73,3 +73,6 @@ CREATE TABLE Laboratorio.Indeterminados
 SELECT * FROM laboratorio.nacimientos
 WHERE SEXO LIKE '%Indeterminado%';
 DROP TABLE laboratorio.nacimientos;
+
+SELECT * FROM varones
+WHERE Semanas < (SELECT MIN(Semanas) FROM indeterminados);
