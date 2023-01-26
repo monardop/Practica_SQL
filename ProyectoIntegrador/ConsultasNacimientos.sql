@@ -80,3 +80,28 @@ WHERE Semanas < (SELECT MIN(Semanas) FROM indeterminados);
 
 SELECT * FROM mujeres 
 WHERE EDAD_MADRE > (SELECT MAX(Edad_Madre) FROM varones);
+
+SELECT * FROM laboratorio.mujeres WHERE SEMANAS < 20
+UNION
+SELECT * FROM laboratorio.varones WHERE SEMANAS < 20
+UNION
+SELECT * FROM laboratorio.indeterminados WHERE SEMANAS < 20;
+
+
+SELECT * FROM laboratorio.mujeres
+WHERE SEMANAS > 40 
+	AND NACIONALIDAD = 'Chilena'
+    AND ESTADO_CIVIL_MADRE = 'Casada'
+    AND FECHA LIKE '%/09/%'
+UNION
+SELECT * FROM laboratorio.varones
+WHERE SEMANAS > 40 
+	AND NACIONALIDAD = 'Chilena'
+    AND ESTADO_CIVIL_MADRE = 'Casada'
+    AND FECHA LIKE '%/09/%'
+UNION
+SELECT * FROM laboratorio.indeterminados
+WHERE SEMANAS > 40 
+	AND NACIONALIDAD = 'Chilena'
+    AND ESTADO_CIVIL_MADRE = 'Casada'
+    AND FECHA LIKE '%/09/%';
