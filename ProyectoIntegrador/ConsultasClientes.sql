@@ -46,3 +46,14 @@ FROM clientes_neptuno as cn
 INNER JOIN pedidos_neptuno as pn
 ON cn.NombreCompania = pn.NombreCompania
 WHERE pn.Cargo > 500;
+
+-- Clientes por continente
+SELECT cn.IDCliente, cn.NombreCompania, 
+	cn.Ciudad, cn.Pais,
+    CASE WHEN cn.Pais IN('Mexico', 'USA', 'Canada') THEN 'América del Norte'
+	WHEN cn.Pais IN('Argentina', 'Brasil', 'Venezuela') THEN 'America del Sur'
+    ELSE 'Europa'
+	END AS Continente
+FROM laboratorio.clientes_neptuno as cn
+ORDER BY Continente, cn.Pais;
+
