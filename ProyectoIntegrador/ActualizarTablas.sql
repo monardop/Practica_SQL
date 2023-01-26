@@ -52,3 +52,14 @@ DROP ano;
 
 select * from productos;
 
+ALTER TABLE laboratorio.productos_neptuno
+MODIFY suspendido VARCHAR(11);
+UPDATE laboratorio.productos_neptuno
+SET Suspendido = 
+	CASE 
+    WHEN suspendido = '0' THEN 'NO' 
+	WHEN suspendido = '1' THEN 'SI'
+	END;
+SELECT * FROM laboratorio.productos_neptuno;
+
+
