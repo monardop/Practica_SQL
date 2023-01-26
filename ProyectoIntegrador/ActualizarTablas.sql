@@ -62,4 +62,22 @@ SET Suspendido =
 	END;
 SELECT * FROM laboratorio.productos_neptuno;
 
+-- Aumento de un 10%
+UPDATE laboratorio.productos_neptuno
+SET PrecioUnidad = ROUND(PrecioUnidad * 1.1, 2);
 
+
+UPDATE laboratorio.proveedores
+SET Region = NULL
+WHERE Region = '';
+
+SELECT * FROM proveedores;
+
+UPDATE laboratorio.clientes
+SET Ciudad = 
+	CONCAT(UPPER(LEFT(Ciudad, 1)), LOWER(SUBSTRING(Ciudad, 2, LENGTH(Ciudad))));
+SELECT * FROM clientes;
+
+CREATE TABLE laboratorio.ProductoSuspendido
+SELECT * FROM laboratorio.productos_neptuno 
+WHERE Suspendido LIKE '%SI%';
