@@ -67,7 +67,8 @@ WHERE SEXO LIKE '%Masculino%';
 
 CREATE TABLE Laboratorio.Mujeres
 SELECT * FROM laboratorio.nacimientos
-WHERE SEXO LIKE '%Femenino%';
+WHERE SEXO = 'Femenino';
+SELECT * FROM NACIMIENTOS;
 
 CREATE TABLE Laboratorio.Indeterminados
 SELECT * FROM laboratorio.nacimientos
@@ -76,3 +77,6 @@ DROP TABLE laboratorio.nacimientos;
 
 SELECT * FROM varones
 WHERE Semanas < (SELECT MIN(Semanas) FROM indeterminados);
+
+SELECT * FROM mujeres 
+WHERE EDAD_MADRE > (SELECT MAX(Edad_Madre) FROM varones);
