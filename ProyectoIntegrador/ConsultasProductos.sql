@@ -52,3 +52,10 @@ SELECT IdProducto, NombreProducto,
 	END AS Tipo
 FROM laboratorio.productos_neptuno
 ORDER BY PrecioUnidad;
+
+-- Productos mayores a 80 dls
+SELECT * FROM productos_neptuno WHERE PrecioUnidad > 80
+UNION
+SELECT * FROM ProductoSuspendido WHERE PrecioUnidad > 80
+ORDER BY NombreProducto;
+
