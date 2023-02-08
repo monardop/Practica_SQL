@@ -23,3 +23,12 @@ Devuelve un listado con el nombre y el precio de todos los productos cuyo nombre
 Devuelve un listado con el nombre de producto, precio y nombre de fabricante, de todos los productos que tengan un precio mayor o igual a 180€. Ordene el resultado en primer lugar por el precio (en orden descendente) y en segundo lugar por el nombre (en orden ascendente)
 
 Devuelve un listado con el identificador y el nombre de fabricante, solamente de aquellos fabricantes que tienen productos asociados en la base de datos.
+
+	Consultas multitabla (Composición externa)
+Resuelva todas las consultas utilizando las cláusulas LEFT JOIN y RIGHT JOIN.
+
+Devuelve un listado de todos los fabricantes que existen en la base de datos, junto con los productos que tiene cada uno de ellos. El listado deberá mostrar también aquellos fabricantes que no tienen productos asociados.
+
+Devuelve un listado donde sólo aparezcan aquellos fabricantes que no tienen ningún producto asociado.
+
+¿Pueden existir productos que no estén relacionados con un fabricante? Justifique su respuesta.
