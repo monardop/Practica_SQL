@@ -95,3 +95,26 @@ SELECT fab.id, fab.nombre
 FROM tienda.fabricante as fab,
 	tienda.producto as pr
 WHERE pr.id_fabricante = fab.id;
+
+
+-- Consultas parte 2
+-- 1
+SELECT fab.nombre AS NombreFabricante,
+	pr.nombre AS NombreProducto
+FROM tienda.fabricante as fab
+LEFT JOIN tienda.producto as pr
+ON fab.id = pr.id_fabricante;
+-- 2 
+SELECT fab.nombre AS NombreFabricante,
+	pr.nombre AS NombreProducto
+FROM tienda.fabricante as fab
+LEFT JOIN tienda.producto as pr
+ON fab.id = pr.id_fabricante
+WHERE pr.nombre IS NULL;
+
+-- 3
+/*
+No debería haber productos sin fabricante dado que id_fabricante en la tabla producto
+es FK que hace referencia a un id en la tabla fabricante 
+*/
+
