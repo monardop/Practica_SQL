@@ -108,3 +108,19 @@ where id <> ALL (
 	select id_fabricante
     from tienda.producto
 );
+
+-- 1.1.7.3
+-- 12
+select nombre
+from tienda.fabricante
+where id  IN(
+	select id_fabricante
+    from tienda.producto
+);
+-- 13
+select nombre
+from tienda.fabricante
+where id  NOT IN(
+	select id_fabricante
+    from tienda.producto
+)
