@@ -183,3 +183,36 @@ WHERE
             f.id = pr.id_fabricante);
 
 
+-- 1.1.7.5
+-- 16
+SELECT 
+	f.nombre AS Fabricante,
+    p.nombre AS Nombre,
+    p.precio AS Precio
+FROM
+    tienda.fabricante f
+        JOIN
+    tienda.producto p ON f.id = p.id_fabricante
+GROUP BY f.nombre
+HAVING 
+	MAX(p.precio)
+ORDER BY fabricante;
+
+-- 17
+SELECT 
+    p.nombre, p.precio
+FROM
+    tienda.producto AS p,
+    tienda.fabricante AS f
+WHERE
+    f.id = p.id_fabricante
+        AND p.precio > (SELECT 
+            AVG(p.precio)
+        FROM
+            tienda.producto
+        WHERE
+            f.id = p.id_fabricante)
+GROUP BY f.nombre;
+
+
+select * from tienda.producto 
