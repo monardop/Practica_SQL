@@ -77,3 +77,34 @@ where id_fabricante =
                 where nombre = "asus"
 			)
 		);
+-- 1.1.7.2
+-- 8
+select * 
+from tienda.producto
+where precio >= All 
+	(
+		select precio 	
+        from tienda.producto
+);
+-- 9
+SELECT * 
+from tienda.producto
+where precio <= ALL
+	(
+		select precio
+        from tienda.producto
+);
+-- 10
+select nombre
+from tienda.fabricante
+where id = ANY (
+		select id_fabricante
+        from tienda.producto
+);
+-- 11
+select nombre
+from tienda.fabricante
+where id <> ALL (
+	select id_fabricante
+    from tienda.producto
+);
