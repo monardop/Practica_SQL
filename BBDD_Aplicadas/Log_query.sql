@@ -43,6 +43,12 @@ BEGIN
 	SELECT @modulo = inserted.modulo, @texto = 'Registro insertado'
 	FROM inserted;
 
-	EXEC insertarLog @modulo, @texto;
+	EXEC ddbba.insertarLog @modulo, @texto;
 END
 GO
+
+insert into ddbba.registro (texto, modulo)
+	VALUES ('Ejercicio 5 finalizado', 'Unidad1');
+
+
+select * from ddbba.registro
