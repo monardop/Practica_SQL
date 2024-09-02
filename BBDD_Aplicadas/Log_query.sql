@@ -18,7 +18,7 @@ GO
 	);
 
 GO
-	CREATE PROCEDURE ddbba.insertarLog
+	CREATE OR ALTER PROCEDURE ddbba.insertarLog
 		@modulo CHAR(10),
 		@texto VARCHAR(50)
 	AS
@@ -33,7 +33,7 @@ GO
 	END
 GO
 
-CREATE TRIGGER ddbba.trg_insert_registros
+CREATE OR ALTER TRIGGER ddbba.trg_insert_registros
 ON ddbba.registro
 AFTER INSERT
 AS
@@ -43,6 +43,12 @@ BEGIN
 	SELECT @modulo = inserted.modulo, @texto = 'Registro insertado'
 	FROM inserted;
 
-	EXEC insertarLog @modulo, @texto;
+	EXEC ddbba.insertarLog @modulo, @texto;
 END
 GO
+
+insert into ddbba.registro (texto, modulo)
+	VALUES ('Ejercicio 5 finalizado', 'Unidad1');
+
+
+select * from ddbba.registro
