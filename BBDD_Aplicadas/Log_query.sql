@@ -18,7 +18,7 @@ GO
 	);
 
 GO
-	CREATE PROCEDURE ddbba.insertarLog
+	CREATE OR ALTER PROCEDURE ddbba.insertarLog
 		@modulo CHAR(10),
 		@texto VARCHAR(50)
 	AS
@@ -33,7 +33,7 @@ GO
 	END
 GO
 
-CREATE TRIGGER ddbba.trg_insert_registros
+CREATE OR ALTER TRIGGER ddbba.trg_insert_registros
 ON ddbba.registro
 AFTER INSERT
 AS
