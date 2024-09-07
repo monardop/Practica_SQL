@@ -110,3 +110,7 @@ GO
             REFERENCES [pablo_monardo].[ddbba].[Rol](id)
     );
 GO
+
+
+insert into ddbba.registro (texto, modulo)
+	VALUES ('Ejercicio 5 finalizado', 'Unidad1');
