@@ -29,3 +29,17 @@ SELECT cl.nombre, cl.pais,
 FROM tablaswf.Pedidos pd
 JOIN tablaswf.Clientes cl 
     ON cl.id_cliente = pd.id_cliente 
+
+/*
+Calcular la diferencia de monto entre un pedido y el siguiente pedido realizado por el mismo 
+cliente, ordenado por fecha de pedido. Muestra el ID del pedido, el ID del cliente, la fecha del 
+pedido y la diferencia de monto.
+*/
+
+SELECT id_pedido, id_cliente, fecha_pedido, monto,
+    monto - LAG(monto) OVER (
+        PARTITION BY id_cliente
+        ORDER BY fecha_pedido
+    ) AS diferencia_monto
+FROM tablaswf.Pedidos
+
