@@ -19,3 +19,10 @@ SELECT EmpleadoID, Nombre, Departamento, Salario,
 FROM tablaswf.Empleados
 GO
 
+-- Ejercicio 3: dividir a los empleados en 4 grupos basados en los salarios.
+SELECT EmpleadoID, Nombre, Departamento, Salario,
+    NTILE(4) OVER (
+        ORDER BY Salario DESC
+    ) AS GrupoSalario
+FROM tablaswf.Empleados
+GO
