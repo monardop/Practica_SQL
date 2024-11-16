@@ -43,3 +43,17 @@ SELECT id_pedido, id_cliente, fecha_pedido, monto,
     ) AS diferencia_monto
 FROM tablaswf.Pedidos
 
+/*
+Determina el percentil de monto de cada pedido en relación con todos los pedidos realizados 
+por clientes del mismo país. Muestra el ID del pedido, el ID del cliente, el monto del pedido y 
+su percentil.
+*/
+
+SELECT pd.id_pedido, pd.id_cliente, cl.pais, pd.monto,
+    PERCENT_RANK() OVER (
+        PARTITION BY cl.pais
+        ORDER BY pd.monto
+    ) AS percentil
+FROM tablaswf.Pedidos pd
+JOIN tablaswf.Clientes cl 
+    ON cl.id_cliente = pd.id_cliente 
