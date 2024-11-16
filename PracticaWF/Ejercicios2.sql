@@ -57,3 +57,21 @@ SELECT pd.id_pedido, pd.id_cliente, cl.pais, pd.monto,
 FROM tablaswf.Pedidos pd
 JOIN tablaswf.Clientes cl 
     ON cl.id_cliente = pd.id_cliente 
+
+/*
+Para cada cliente, muestra el ID del pedido, el número total de pedidos realizados por ese cliente, 
+su nombre y la posición relativa de cada pedido en relación con el total de pedidos del cliente 
+(ordenados por fecha de pedido).
+*/
+
+SELECT pd.id_pedido, pd.id_cliente, cl.nombre, 
+    COUNT(cl.nombre) OVER(
+        PARTITION BY cl.nombre
+    )total_pedidos_cliente,
+    COUNT(cl.nombre) OVER (
+        PARTITION BY cl.nombre
+        ORDER BY pd.fecha_pedido
+    ) posicion_rel_pedidos_cliente
+FROM tablaswf.Pedidos pd
+JOIN tablaswf.Clientes cl 
+    ON cl.id_cliente = pd.id_cliente 
