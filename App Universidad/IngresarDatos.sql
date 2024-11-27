@@ -2,7 +2,7 @@ GO
 USE University
 
 GO 
-    INSERT INTO  [University].[computer_engineering].[career_branch]
+INSERT INTO  career_branch
     VALUES
         ('Ciencias Básicas'), -- 1
         ('Desarrollo de Software'),-- 2
@@ -11,27 +11,27 @@ GO
         ('Calidad y seguridad de la Información'),-- 5
         ('Gestión y complementarias'),-- 6
         ('Transversales') -- 7
-    
-    INSERT INTO [University].[computer_engineering].[course_State]
+
+go    
+INSERT INTO course_State
     VALUES
         ('Regularizada'),
         ('Sin Cursar'),
         ('En Curso'),
         ('Aprobada')
-    
-    INSERT INTO [University].[computer_engineering].[Origin]
+
+GO  
+INSERT INTO Origin
     VALUES 
         ('Promoción'),
         ('Final'),
         ('Abandonada'),
         ('Recursada'),
         ('Final Desaprobado')
-GO
 
 GO
 -- Materias
-
-    INSERT INTO [University].[computer_engineering].[course] 
+INSERT INTO course 
     (code, course_name, id_branch, id_state, career_year) VALUES
         -- Transversales
         (901, 'Inglés Transversal Nivel I', 7, 2, 1),
@@ -99,12 +99,12 @@ GO
         (3668, 'Inteligencia Artificial Aplicada', 2,2,5),
         (3669, 'Ciencia de datos', 2,2,5),
         (3671, 'Proyecto final de carrera',2,2,5),
-        (3672, 'Electiva I',2,2,5),
-        (3673, 'Electiva II',2,2,5),
-        (3674, 'Electiva III',2,2,5)
+        (3677, 'Lenguaje orientado a negocios',2,2,5),
+        (3678, 'Tecnologías en seguridad',2,2,5),
+        (3679, 'Visión Artificial',2,2,5)
              
 GO
-    INSERT INTO [University].[computer_engineering].[prerequisite_course] 
+INSERT INTO prerequisite_course 
     VALUES  
         (3628,3622), (3629, 3623), (3630, 3624), (3631, 3625),
         (3633, 3622), (3634, 3628), (3635, 3629), (3625, 3621),
@@ -124,6 +124,6 @@ GO
         (3666, 3655),(3666, 3652),(3666, 3649), (3667, 3647),
         (3668, 3664), (3668, 3656), (3669, 3661), (3670, 3664),
         (3670, 3656), (3671, 3667),(3671, 3661),(3671, 3660),
-        (3671, 3659),(3671, 3656),(3672,3658),(3672,3661),
-        (3672,3663),(3673, 3662),(3673, 3666),(3674, 3664),
-        (3674, 3665), (902, 901), (903, 902), (904, 903), (912, 911)
+        (3671, 3659),(3671, 3656),(3677,3658),(3677,3661),
+        (3677,3663),(3678, 3662),(3678, 3666),(3679, 3664),
+        (3679, 3665), (902, 901), (903, 902), (904, 903), (912, 911)
